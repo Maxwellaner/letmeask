@@ -1,9 +1,9 @@
 import { ReactNode } from 'react';
 import classnames from 'classnames';
 
-import './styles.scss';
+import { Container } from './styles';
 
-type QuestionPops = {
+type QuestionProps = {
   content: string;
   author: {
     name: string;
@@ -20,9 +20,9 @@ export function Question({
   children, 
   isAnswered = false, 
   isHighlighted = false 
-}: QuestionPops) {
+}: QuestionProps) {
   return (
-    <div 
+    <Container 
       className={classnames(
         'question',
         { answered: isAnswered },
@@ -39,6 +39,6 @@ export function Question({
           {children}
         </div>
       </footer>
-    </div>
+    </Container>
   );
 }

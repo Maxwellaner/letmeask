@@ -1,37 +1,12 @@
-#page-auth {
+import styled from 'styled-components'
+
+export const Container = styled.div`
   display: flex;
   align-items: stretch;
   height: 100vh;
 
-  aside {
-    flex: 7;
-    background: #835afd;
-    color: #fff;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 120px 80px;
-
-    img {
-      max-width: 320px;
-    }
-
-    strong {
-      font: 700 36px "Poppins", sans-serif;
-      line-height: 42px;
-      margin-top: 16px;
-    }
-
-    p {
-      font-size: 24px;
-      line-height: 32px;
-      margin-top: 16px;
-      color: #f8f8f8;
-    }
-  }
-
   main {
-    flex: 8;
+    flex: 1;
 
     padding: 0 32px;
 
@@ -48,14 +23,21 @@
     align-items: stretch;
     text-align: center;
 
-    > img {
-      align-self: center;
+    strong {
+      font: 600 18px "Poppins", sans-serif;
+      line-height: 42px;
+      margin-top: 6px;
+      color: ${props => props.theme.colors.text};
     }
 
-    h2 {
-      font-size: 24px;
-      margin: 64px 0 24px;
-      font-family: "Poppins", sans-serif;
+    p {
+      font-size: 14px;
+      line-height: 32px;
+      color: ${props => props.theme.colors.text};
+    }
+
+    > img {
+      align-self: center;
     }
 
     form {
@@ -76,20 +58,10 @@
         width: 100%;
       }
     }
-
-    p {
-      font-size: 14px;
-      color: #737380;
-      margin-top: 16px;
-
-      a {
-        color: #e559f9;
-      }
-    }
   }
 
   .create-room {
-    margin-top: 64px;
+    margin-top: 10px;
     height: 50px;
     border-radius: 8px;
     font-weight: 500;
@@ -116,7 +88,7 @@
 
   .separator {
     font-size: 14px;
-    color: #a8a8b3;
+    color: ${props => props.theme.colors.text};
 
     margin: 32px 0;
     display: flex;
@@ -138,4 +110,4 @@
       margin-left: 16px;
     }
   }
-}
+`;

@@ -1,13 +1,13 @@
 import { FormEvent, useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 
-import illustrationImg from '../assets/images/illustration.svg';
-import logoImg from '../assets/images/logo.svg';
-import { Button } from '../components/Button';
+import illustrationImg from '../../../assets/images/illustration.svg';
+import logoImg from '../../../assets/images/logo.svg';
+import { Button } from '../../atoms/Button';
 
-import '../styles/auth.scss';
-import { useAuth } from '../hooks/useAuth';
-import { database } from '../services/firebase';
+import { Container } from './styles';
+import { useAuth } from '../../../hooks/useAuth';
+import { database } from '../../../services/firebase';
 
 export function NewRoom() {
   const history = useHistory();
@@ -33,12 +33,7 @@ export function NewRoom() {
   }
 
   return (
-    <div id="page-auth">
-      <aside>
-        <img src={illustrationImg} alt="Ilustração simbolizando perguntas e respostas" />
-        <strong>Crie salas de Q&amp;A ao-vivo</strong>
-        <p>Tire as dúvidas de sua audiência em tempo real</p>
-      </aside>
+    <Container>
       <main>
         <div className="main-content">
           <img src={logoImg} alt="Letmeask" />
@@ -56,6 +51,6 @@ export function NewRoom() {
           <p>Quer entrar em uma sala existente? <Link to="/">clique aqui</Link></p>
           </div>
       </main>
-    </div>    
+    </Container>    
   );
 }

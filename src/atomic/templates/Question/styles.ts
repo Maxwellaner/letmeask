@@ -1,5 +1,7 @@
-.question {
-  background: #fefefe;
+import styled from "styled-components";
+
+export const Container = styled.div`
+  background: ${props => props.theme.colors.cardBackground};
   border-radius: 8px;
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
   padding: 24px;
@@ -9,20 +11,21 @@
   }
 
   &.highlighted {
-    background: #f4f0ff;
-    border: 1px solid #835afd;
+    background: ${props => props.theme.colors.primary};
+    border: 1px solid ${props => props.theme.colors.primary};
+    filter: saturate(1.2);
 
     footer .user-info span {
-      color: #29292e;
+      color: ${props => props.theme.colors.text};
     }
   }
 
   &.answered {
-    background: #dbdcdd;
+    opacity: 0.3;
   }
 
   p {
-    color: #29292e;
+    color: ${props => props.theme.colors.text};
   }
 
   footer {
@@ -42,8 +45,7 @@
       }
 
       span {
-        margin-left: 8px;
-        color: #737380;
+        color: ${props => props.theme.colors.text};
         font-size: 14px;
       }
     }
@@ -66,10 +68,10 @@
         gap: 8px;
 
         &.liked {
-          color: #835afd;
+          color: ${props => props.theme.colors.primary};
 
           svg path {
-            stroke: #835afd;
+            stroke: ${props => props.theme.colors.primary};
           }
         }
       }
@@ -79,4 +81,4 @@
       }
     }
   }
-}
+`;
