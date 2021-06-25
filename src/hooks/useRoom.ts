@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useHistory } from "react-router-dom";
 import { database } from "../services/firebase";
 import { useAuth } from "./useAuth";
 
@@ -15,7 +16,7 @@ type FirebaseQuestions = Record<string, {
   }>;
 }>;
 
-type Question = {
+export type QuestionModel = {
   id: string;
   author: {
     name: string;
@@ -29,9 +30,10 @@ type Question = {
 }
 
 export function useRoom(roomId: string) {
+  const history = useHistory();
   const { authContext } = useAuth();
   const [title, setTitle] = useState();
-  const [questions, setQuestions] = useState<Question[]>([]);
+  const [questions, setQuestions] = useState<QuestionModel[]>([]);
 
   useEffect(() => {
     const roomRef = database.ref(`/rooms/${roomId}`);
@@ -39,7 +41,12 @@ export function useRoom(roomId: string) {
     // TODO: ver eventos do firebase de change do valor ou adição ou remoção
     // para não ter que atualizar todos os valores sempre
     roomRef.on('value', room => {
-      const parsedQuestions = Object.entries(
+      if (room.val().endedAt) {
+        history.push("/")
+        alert('Room already closed.');
+      }
+      
+      const parsedQuestions = room.val().questions ? Object.entries(
         room.val().questions as FirebaseQuestions
       ).map(([key, value]) => {
         return {
@@ -51,14 +58,14 @@ export function useRoom(roomId: string) {
           likeCount: Object.values(value.likes ?? {}).length,
           likeId: Object.entries(value.likes ?? {}).find(([key, like]) => like.authorId === authContext?.id)?.[0]
         };
-      });
+      }) : [];
 
       setTitle(room.val().title);
-      setQuestions(parsedQuestions);
+      setQuestions(parsedQuestions.reverse());
     });
 
     return () => roomRef.off('value');
-  }, [roomId, authContext?.id]);
+  }, [roomId, authContext?.id, history]);
 
   return {
     questions,

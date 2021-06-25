@@ -1,14 +1,15 @@
 import { FormEvent, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import logoImg from '../assets/images/logo.svg';
-import { Button } from '../components/Button';
-import { Question } from '../components/Question';
-import { RoomCode } from '../components/RoomCode';
-import { useAuth } from '../hooks/useAuth';
-import { useRoom } from '../hooks/useRoom';
-import { database } from '../services/firebase';
+import { Button } from '../../atoms/Button';
+import { Question } from '../Question';
+import { useAuth } from '../../../hooks/useAuth';
+import { useRoom } from '../../../hooks/useRoom';
+import { database } from '../../../services/firebase';
 
-import '../styles/room.scss';
+import { Container } from './styles';
+import { Header } from '../../atoms/Header';
+import { RoomTitle } from '../../atoms/RoomTitle';
+import { useToogleTheme } from '../../../hooks/useToogleTheme';
 
 type RoomParams = {
   id: string;
@@ -16,6 +17,7 @@ type RoomParams = {
 
 export function Room() {
   const { authContext } = useAuth();
+  const { toogleTheme } = useToogleTheme();
   const params = useParams<RoomParams>();
   const roomId = params?.id;
   const [newQuestion, setNewQuestion] = useState('');
@@ -54,20 +56,10 @@ export function Room() {
   }
 
   return (
-    <div id="page-room">
-      <header>
-        <div className="content">
-          <img src={logoImg} alt="letmeask" />
-          <RoomCode code={roomId} />
-        </div>
-      </header>
-
+    <Container>
+      <Header toogleTheme={toogleTheme} roomId={roomId} />
       <main>
-        <div className="room-title">
-          <h1>Sala - {title}</h1>
-          { questions.length > 0 && <span>{questions.length} pergunta(s)</span>}
-        </div>
-
+        <RoomTitle title={title} questionsCount={questions.length} />
         <form onSubmit={handleSendQuestion}>
           <textarea 
             placeholder="Qual sua pergunta?"
@@ -114,6 +106,6 @@ export function Room() {
           })}
         </div>
       </main>
-    </div>
+    </Container>
   );
 }
