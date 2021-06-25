@@ -1,46 +1,33 @@
-# Getting Started with Create React App
+# Letmeask
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project was created in NLW classes of Rocketseat and will be improved by me in many aspects. The purpose of the application is to provide the creation of a room where users will create questions to be answered by the administrator.
 
-## Available Scripts
+## Features passed in classes
 
-In the project directory, you can run:
+- Google social login
+- Room creation
+- Room closing
+- User can like the answers
+- Administrator can mark the questions as answered.
+- Administrator can mark the questions as highlighted.
 
-### `yarn start`
+## Initial layout
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+#### Login page
+![image](https://user-images.githubusercontent.com/51169497/123431325-83a3d280-d59f-11eb-8e93-1da873416c40.png)
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+#### Creation room page
+![image](https://user-images.githubusercontent.com/51169497/123431443-a504be80-d59f-11eb-8595-426aab8d24c2.png)
 
-### `yarn test`
+#### Admin page
+![image](https://user-images.githubusercontent.com/51169497/123432566-e8abf800-d5a0-11eb-9065-b359e6b6b846.png)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+#### User page
+![image](https://user-images.githubusercontent.com/51169497/123432481-d29e3780-d5a0-11eb-870c-afa2f0432c18.png)
 
-### `yarn build`
+## Next features and impovements
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+- Implement responsiveness
+- Improve hook useRoom to not update all information with every change
+- Change layout
+- Admin can create poll
